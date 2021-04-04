@@ -14,7 +14,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 
-export 'package:dio/dio.dart' show Response;
+export 'package:dio/dio.dart' show Response, MultipartFile;
 
 part 'client.dart';
 part 'enums.dart';
@@ -24,6 +24,9 @@ part 'services/account.dart';
 part 'services/avatars.dart';
 part 'services/database.dart';
 part 'services/functions.dart';
+part 'services/health.dart';
 part 'services/locale.dart';
+part 'services/projects.dart';
 part 'services/storage.dart';
 part 'services/teams.dart';
+part 'services/users.dart';

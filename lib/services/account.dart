@@ -306,6 +306,7 @@ class Account extends Service {
             'failure': failure,
             'scopes': scopes,
             'project': client.config['project'],
+            'key': client.config['key'],
         };
 
 

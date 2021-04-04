@@ -25,12 +25,14 @@ class Client {
         
         this.headers = {
             'content-type': 'application/json',
-            'x-sdk-version': 'appwrite:flutter:0.4.0-dev.3',
+            'x-sdk-version': 'appwrite:flutter:0.0.1',
+            'X-Appwrite-Response-Format' : '0.7.0',
         };
 
         this.config = {};
 
         assert(endPoint.startsWith(RegExp("http://|https://")), "endPoint $endPoint must start with 'http'");
+        init();
     }
     
     Future<Directory> _getCookiePath() async {
@@ -48,9 +50,22 @@ class Client {
         return this;
     }
 
+     /// Your secret API key
+    Client setKey(value) {
+        config['key'] = value;
+        addHeader('X-Appwrite-Key', value);
+        return this;
+    }
+
     Client setLocale(value) {
         config['locale'] = value;
         addHeader('X-Appwrite-Locale', value);
+        return this;
+    }
+
+    Client setMode(value) {
+        config['mode'] = value;
+        addHeader('X-Appwrite-Mode', value);
         return this;
     }
 
@@ -72,22 +87,21 @@ class Client {
     }
 
     Future init() async {
-        if(!initialized) {
-          // if web skip cookie implementation and origin header as those are automatically handled by browsers
-          if(!kIsWeb) {
+        // if web skip cookie implementation and origin header as those are automatically handled by browsers
+        if(!kIsWeb) {
             final Directory cookieDir = await _getCookiePath();
             cookieJar = new PersistCookieJar(dir:cookieDir.path);
             this.http.interceptors.add(CookieManager(cookieJar));
             PackageInfo packageInfo = await PackageInfo.fromPlatform();
             addHeader('Origin', 'appwrite-$type://${packageInfo.packageName ?? packageInfo.appName}');
-          }else{
+        } else {
             // if web set httpClientAdapter as BrowserHttpClientAdapter with withCredentials true to make cookies work
             this.http.options.extra['withCredentials'] = true;
-          }
-
-          this.http.options.baseUrl = this.endPoint;
-          this.http.options.validateStatus = (status) => status < 400;
         }
+
+        this.http.options.baseUrl = this.endPoint;
+        this.http.options.validateStatus = (status) => status < 400;
+        initialized = true;
     }
 
     Future<Response> call(HttpMethod method, {String path = '', Map<String, String> headers = const {}, Map<String, dynamic> params = const {}, ResponseType responseType}) async {
@@ -99,7 +113,9 @@ class Client {
             };
         }
 
-        await this.init();
+        if(!initialized) {
+            await this.init();
+        }
 
         // Origin is hardcoded for testing
         Options options = Options(

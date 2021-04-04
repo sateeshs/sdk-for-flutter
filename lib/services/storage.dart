@@ -116,6 +116,7 @@ class Storage extends Service {
 
         final Map<String, dynamic> params = {
             'project': client.config['project'],
+            'key': client.config['key'],
         };
 
         params.keys.forEach((key) {if (params[key] is int || params[key] is double) {
@@ -142,6 +143,7 @@ class Storage extends Service {
             'background': background,
             'output': output,
             'project': client.config['project'],
+            'key': client.config['key'],
         };
 
         params.keys.forEach((key) {if (params[key] is int || params[key] is double) {
@@ -162,6 +164,7 @@ class Storage extends Service {
 
         final Map<String, dynamic> params = {
             'project': client.config['project'],
+            'key': client.config['key'],
         };
 
         params.keys.forEach((key) {if (params[key] is int || params[key] is double) {

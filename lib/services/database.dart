@@ -4,6 +4,108 @@ part of appwrite;
 class Database extends Service {
     Database(Client client): super(client);
 
+     /// List Collections
+     ///
+     /// Get a list of all the user collections. You can use the query params to
+     /// filter your results. On admin mode, this endpoint will return a list of all
+     /// of the project's collections. [Learn more about different API
+     /// modes](/docs/admin).
+     ///
+    Future<Response> listCollections({String search = '', int limit = 25, int offset = 0, OrderType orderType = OrderType.asc}) {
+        final String path = '/database/collections';
+
+        final Map<String, dynamic> params = {
+            'search': search,
+            'limit': limit,
+            'offset': offset,
+            'orderType': orderType.name(),
+        };
+
+        final Map<String, String> headers = {
+            'content-type': 'application/json',
+        };
+
+        return client.call(HttpMethod.get, path: path, params: params, headers: headers);
+    }
+
+     /// Create Collection
+     ///
+     /// Create a new Collection.
+     ///
+    Future<Response> createCollection({@required String name, @required List read, @required List write, @required List rules}) {
+        final String path = '/database/collections';
+
+        final Map<String, dynamic> params = {
+            'name': name,
+            'read': read,
+            'write': write,
+            'rules': rules,
+        };
+
+        final Map<String, String> headers = {
+            'content-type': 'application/json',
+        };
+
+        return client.call(HttpMethod.post, path: path, params: params, headers: headers);
+    }
+
+     /// Get Collection
+     ///
+     /// Get a collection by its unique ID. This endpoint response returns a JSON
+     /// object with the collection metadata.
+     ///
+    Future<Response> getCollection({@required String collectionId}) {
+        final String path = '/database/collections/{collectionId}'.replaceAll(RegExp('{collectionId}'), collectionId);
+
+        final Map<String, dynamic> params = {
+        };
+
+        final Map<String, String> headers = {
+            'content-type': 'application/json',
+        };
+
+        return client.call(HttpMethod.get, path: path, params: params, headers: headers);
+    }
+
+     /// Update Collection
+     ///
+     /// Update a collection by its unique ID.
+     ///
+    Future<Response> updateCollection({@required String collectionId, @required String name, @required List read, @required List write, List rules = const []}) {
+        final String path = '/database/collections/{collectionId}'.replaceAll(RegExp('{collectionId}'), collectionId);
+
+        final Map<String, dynamic> params = {
+            'name': name,
+            'read': read,
+            'write': write,
+            'rules': rules,
+        };
+
+        final Map<String, String> headers = {
+            'content-type': 'application/json',
+        };
+
+        return client.call(HttpMethod.put, path: path, params: params, headers: headers);
+    }
+
+     /// Delete Collection
+     ///
+     /// Delete a collection by its unique ID. Only users with write permissions
+     /// have access to delete this resource.
+     ///
+    Future<Response> deleteCollection({@required String collectionId}) {
+        final String path = '/database/collections/{collectionId}'.replaceAll(RegExp('{collectionId}'), collectionId);
+
+        final Map<String, dynamic> params = {
+        };
+
+        final Map<String, String> headers = {
+            'content-type': 'application/json',
+        };
+
+        return client.call(HttpMethod.delete, path: path, params: params, headers: headers);
+    }
+
      /// List Documents
      ///
      /// Get a list of all the user documents. You can use the query params to
