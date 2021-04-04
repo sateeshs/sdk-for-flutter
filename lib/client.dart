@@ -121,12 +121,13 @@ class Client {
         Options options = Options(
             headers: {...this.headers!, ...headers},
             method: method.name(),
-            responseType: responseType
+            responseType: responseType,
+            listFormat: ListFormat.multiCompatible,
         );
 
         try {
             if(headers['content-type'] == 'multipart/form-data') {
-                return await http.request(path, data: FormData.fromMap(params), options: options);
+                return await http.request(path, data: FormData.fromMap(params,ListFormat.multiCompatible), options: options);
             }
 
             if (method == HttpMethod.get) {
