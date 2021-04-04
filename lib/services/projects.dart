@@ -23,7 +23,7 @@ class Projects extends Service {
     }
 
      /// Create Project
-    Future<Response> create({@required String name, @required String teamId, String description = '', String logo = '', String url = '', String legalName = '', String legalCountry = '', String legalState = '', String legalCity = '', String legalAddress = '', String legalTaxId = ''}) {
+    Future<Response> create({required String name, required String teamId, String description = '', String logo = '', String url = '', String legalName = '', String legalCountry = '', String legalState = '', String legalCity = '', String legalAddress = '', String legalTaxId = ''}) {
         final String path = '/projects';
 
         final Map<String, dynamic> params = {
@@ -48,7 +48,7 @@ class Projects extends Service {
     }
 
      /// Get Project
-    Future<Response> get({@required String projectId}) {
+    Future<Response> get({required String projectId}) {
         final String path = '/projects/{projectId}'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -62,7 +62,7 @@ class Projects extends Service {
     }
 
      /// Update Project
-    Future<Response> update({@required String projectId, @required String name, String description = '', String logo = '', String url = '', String legalName = '', String legalCountry = '', String legalState = '', String legalCity = '', String legalAddress = '', String legalTaxId = ''}) {
+    Future<Response> update({required String projectId, required String name, String description = '', String logo = '', String url = '', String legalName = '', String legalCountry = '', String legalState = '', String legalCity = '', String legalAddress = '', String legalTaxId = ''}) {
         final String path = '/projects/{projectId}'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -86,7 +86,7 @@ class Projects extends Service {
     }
 
      /// Delete Project
-    Future<Response> delete({@required String projectId, @required String password}) {
+    Future<Response> delete({required String projectId, required String password}) {
         final String path = '/projects/{projectId}'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -101,7 +101,7 @@ class Projects extends Service {
     }
 
      /// List Domains
-    Future<Response> listDomains({@required String projectId}) {
+    Future<Response> listDomains({required String projectId}) {
         final String path = '/projects/{projectId}/domains'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -115,7 +115,7 @@ class Projects extends Service {
     }
 
      /// Create Domain
-    Future<Response> createDomain({@required String projectId, @required String domain}) {
+    Future<Response> createDomain({required String projectId, required String domain}) {
         final String path = '/projects/{projectId}/domains'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -130,7 +130,7 @@ class Projects extends Service {
     }
 
      /// Get Domain
-    Future<Response> getDomain({@required String projectId, @required String domainId}) {
+    Future<Response> getDomain({required String projectId, required String domainId}) {
         final String path = '/projects/{projectId}/domains/{domainId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{domainId}'), domainId);
 
         final Map<String, dynamic> params = {
@@ -144,7 +144,7 @@ class Projects extends Service {
     }
 
      /// Delete Domain
-    Future<Response> deleteDomain({@required String projectId, @required String domainId}) {
+    Future<Response> deleteDomain({required String projectId, required String domainId}) {
         final String path = '/projects/{projectId}/domains/{domainId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{domainId}'), domainId);
 
         final Map<String, dynamic> params = {
@@ -158,7 +158,7 @@ class Projects extends Service {
     }
 
      /// Update Domain Verification Status
-    Future<Response> updateDomainVerification({@required String projectId, @required String domainId}) {
+    Future<Response> updateDomainVerification({required String projectId, required String domainId}) {
         final String path = '/projects/{projectId}/domains/{domainId}/verification'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{domainId}'), domainId);
 
         final Map<String, dynamic> params = {
@@ -172,7 +172,7 @@ class Projects extends Service {
     }
 
      /// List Keys
-    Future<Response> listKeys({@required String projectId}) {
+    Future<Response> listKeys({required String projectId}) {
         final String path = '/projects/{projectId}/keys'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -186,7 +186,7 @@ class Projects extends Service {
     }
 
      /// Create Key
-    Future<Response> createKey({@required String projectId, @required String name, @required List scopes}) {
+    Future<Response> createKey({required String projectId, required String name, required List scopes}) {
         final String path = '/projects/{projectId}/keys'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -202,7 +202,7 @@ class Projects extends Service {
     }
 
      /// Get Key
-    Future<Response> getKey({@required String projectId, @required String keyId}) {
+    Future<Response> getKey({required String projectId, required String keyId}) {
         final String path = '/projects/{projectId}/keys/{keyId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{keyId}'), keyId);
 
         final Map<String, dynamic> params = {
@@ -216,7 +216,7 @@ class Projects extends Service {
     }
 
      /// Update Key
-    Future<Response> updateKey({@required String projectId, @required String keyId, @required String name, @required List scopes}) {
+    Future<Response> updateKey({required String projectId, required String keyId, required String name, required List scopes}) {
         final String path = '/projects/{projectId}/keys/{keyId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{keyId}'), keyId);
 
         final Map<String, dynamic> params = {
@@ -232,7 +232,7 @@ class Projects extends Service {
     }
 
      /// Delete Key
-    Future<Response> deleteKey({@required String projectId, @required String keyId}) {
+    Future<Response> deleteKey({required String projectId, required String keyId}) {
         final String path = '/projects/{projectId}/keys/{keyId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{keyId}'), keyId);
 
         final Map<String, dynamic> params = {
@@ -246,7 +246,7 @@ class Projects extends Service {
     }
 
      /// Update Project OAuth2
-    Future<Response> updateOAuth2({@required String projectId, @required String provider, String appId = '', String secret = ''}) {
+    Future<Response> updateOAuth2({required String projectId, required String provider, String appId = '', String secret = ''}) {
         final String path = '/projects/{projectId}/oauth2'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -263,7 +263,7 @@ class Projects extends Service {
     }
 
      /// List Platforms
-    Future<Response> listPlatforms({@required String projectId}) {
+    Future<Response> listPlatforms({required String projectId}) {
         final String path = '/projects/{projectId}/platforms'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -277,7 +277,7 @@ class Projects extends Service {
     }
 
      /// Create Platform
-    Future<Response> createPlatform({@required String projectId, @required String type, @required String name, String key = '', String store = '', String hostname = ''}) {
+    Future<Response> createPlatform({required String projectId, required String type, required String name, String key = '', String store = '', String hostname = ''}) {
         final String path = '/projects/{projectId}/platforms'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -296,7 +296,7 @@ class Projects extends Service {
     }
 
      /// Get Platform
-    Future<Response> getPlatform({@required String projectId, @required String platformId}) {
+    Future<Response> getPlatform({required String projectId, required String platformId}) {
         final String path = '/projects/{projectId}/platforms/{platformId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{platformId}'), platformId);
 
         final Map<String, dynamic> params = {
@@ -310,7 +310,7 @@ class Projects extends Service {
     }
 
      /// Update Platform
-    Future<Response> updatePlatform({@required String projectId, @required String platformId, @required String name, String key = '', String store = '', String hostname = ''}) {
+    Future<Response> updatePlatform({required String projectId, required String platformId, required String name, String key = '', String store = '', String hostname = ''}) {
         final String path = '/projects/{projectId}/platforms/{platformId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{platformId}'), platformId);
 
         final Map<String, dynamic> params = {
@@ -328,7 +328,7 @@ class Projects extends Service {
     }
 
      /// Delete Platform
-    Future<Response> deletePlatform({@required String projectId, @required String platformId}) {
+    Future<Response> deletePlatform({required String projectId, required String platformId}) {
         final String path = '/projects/{projectId}/platforms/{platformId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{platformId}'), platformId);
 
         final Map<String, dynamic> params = {
@@ -342,7 +342,7 @@ class Projects extends Service {
     }
 
      /// List Tasks
-    Future<Response> listTasks({@required String projectId}) {
+    Future<Response> listTasks({required String projectId}) {
         final String path = '/projects/{projectId}/tasks'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -356,7 +356,7 @@ class Projects extends Service {
     }
 
      /// Create Task
-    Future<Response> createTask({@required String projectId, @required String name, @required String status, @required String schedule, @required bool security, @required String httpMethod, @required String httpUrl, List httpHeaders = const [], String httpUser = '', String httpPass = ''}) {
+    Future<Response> createTask({required String projectId, required String name, required String status, required String schedule, required bool security, required String httpMethod, required String httpUrl, List httpHeaders = const [], String httpUser = '', String httpPass = ''}) {
         final String path = '/projects/{projectId}/tasks'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -379,7 +379,7 @@ class Projects extends Service {
     }
 
      /// Get Task
-    Future<Response> getTask({@required String projectId, @required String taskId}) {
+    Future<Response> getTask({required String projectId, required String taskId}) {
         final String path = '/projects/{projectId}/tasks/{taskId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{taskId}'), taskId);
 
         final Map<String, dynamic> params = {
@@ -393,7 +393,7 @@ class Projects extends Service {
     }
 
      /// Update Task
-    Future<Response> updateTask({@required String projectId, @required String taskId, @required String name, @required String status, @required String schedule, @required bool security, @required String httpMethod, @required String httpUrl, List httpHeaders = const [], String httpUser = '', String httpPass = ''}) {
+    Future<Response> updateTask({required String projectId, required String taskId, required String name, required String status, required String schedule, required bool security, required String httpMethod, required String httpUrl, List httpHeaders = const [], String httpUser = '', String httpPass = ''}) {
         final String path = '/projects/{projectId}/tasks/{taskId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{taskId}'), taskId);
 
         final Map<String, dynamic> params = {
@@ -416,7 +416,7 @@ class Projects extends Service {
     }
 
      /// Delete Task
-    Future<Response> deleteTask({@required String projectId, @required String taskId}) {
+    Future<Response> deleteTask({required String projectId, required String taskId}) {
         final String path = '/projects/{projectId}/tasks/{taskId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{taskId}'), taskId);
 
         final Map<String, dynamic> params = {
@@ -430,7 +430,7 @@ class Projects extends Service {
     }
 
      /// Get Project
-    Future<Response> getUsage({@required String projectId, String range = '30d'}) {
+    Future<Response> getUsage({required String projectId, String range = '30d'}) {
         final String path = '/projects/{projectId}/usage'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -445,7 +445,7 @@ class Projects extends Service {
     }
 
      /// List Webhooks
-    Future<Response> listWebhooks({@required String projectId}) {
+    Future<Response> listWebhooks({required String projectId}) {
         final String path = '/projects/{projectId}/webhooks'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -459,7 +459,7 @@ class Projects extends Service {
     }
 
      /// Create Webhook
-    Future<Response> createWebhook({@required String projectId, @required String name, @required List events, @required String url, @required bool security, String httpUser = '', String httpPass = ''}) {
+    Future<Response> createWebhook({required String projectId, required String name, required List events, required String url, required bool security, String httpUser = '', String httpPass = ''}) {
         final String path = '/projects/{projectId}/webhooks'.replaceAll(RegExp('{projectId}'), projectId);
 
         final Map<String, dynamic> params = {
@@ -479,7 +479,7 @@ class Projects extends Service {
     }
 
      /// Get Webhook
-    Future<Response> getWebhook({@required String projectId, @required String webhookId}) {
+    Future<Response> getWebhook({required String projectId, required String webhookId}) {
         final String path = '/projects/{projectId}/webhooks/{webhookId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{webhookId}'), webhookId);
 
         final Map<String, dynamic> params = {
@@ -493,7 +493,7 @@ class Projects extends Service {
     }
 
      /// Update Webhook
-    Future<Response> updateWebhook({@required String projectId, @required String webhookId, @required String name, @required List events, @required String url, @required bool security, String httpUser = '', String httpPass = ''}) {
+    Future<Response> updateWebhook({required String projectId, required String webhookId, required String name, required List events, required String url, required bool security, String httpUser = '', String httpPass = ''}) {
         final String path = '/projects/{projectId}/webhooks/{webhookId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{webhookId}'), webhookId);
 
         final Map<String, dynamic> params = {
@@ -513,7 +513,7 @@ class Projects extends Service {
     }
 
      /// Delete Webhook
-    Future<Response> deleteWebhook({@required String projectId, @required String webhookId}) {
+    Future<Response> deleteWebhook({required String projectId, required String webhookId}) {
         final String path = '/projects/{projectId}/webhooks/{webhookId}'.replaceAll(RegExp('{projectId}'), projectId).replaceAll(RegExp('{webhookId}'), webhookId);
 
         final Map<String, dynamic> params = {
